@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_bash"
+            android:icon="@drawable/bash"
+            android:title="@string/menu_bash" />
+        <item
+            android:id="@+id/nav_abyss"
+            android:icon="@drawable/bash"
+            android:title="@string/menu_abyss" />
+        <item
+            android:id="@+id/nav_zadolbali"
+            android:icon="@drawable/zadolbali"
+            android:title="@string/menu_zadolbali" />
+        <item
+            android:id="@+id/nav_newanekdot"
+            android:icon="@drawable/anekdot"
+            android:title="@string/menu_newanekdot" />
+        <item
+            android:id="@+id/nav_newstory"
+            android:icon="@drawable/anekdot"
+            android:title="@string/menu_newstory" />
+        <item
+            android:id="@+id/nav_newaforizm"
+            android:icon="@drawable/anekdot"
+            android:title="@string/menu_newaforizm" />
+        <item
+            android:id="@+id/nav_newstihi"
+            android:icon="@drawable/anekdot"
+            android:title="@string/menu_newstihi" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/favor"
+            android:title="@string/menu_favorites" />
+    </group>
+</menu>

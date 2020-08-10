@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Приколы</string>
+    <string name="navigation_drawer_open">Открыть навигационную панель</string>
+    <string name="navigation_drawer_close">Закрыть навигационную панель</string>
+    <string name="nav_header_title">Лучшие приколы Рунета</string>
+    <string name="nav_header_desc">Заголовок</string>
+    <string name="menu_favorites">Избранное</string>
+
+    <string name="error">Возникла ошибка подключения по сети</string>
+    <string name="add">Добавлено в избранное</string>
+    <string name="errorDB">Возникла ошибка записи в базу данных</string>
+    <string name="remove">Удалено из избранного</string>
+    <string name="share">Поделиться</string>
+    <string name="from">Делюсь из приложения https://play.google.com/store/apps/details?id=com.makienkovs.prikoli</string>
+</resources>

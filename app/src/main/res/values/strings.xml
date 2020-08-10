@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Prikoli</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Best jokes of Runet</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_bash" translatable="false">bash.im</string>
+    <string name="menu_abyss" translatable="false">bash.im/abyss</string>
+    <string name="menu_zadolbali" translatable="false">zadolba.li</string>
+    <string name="menu_newanekdot" translatable="false">anekdot.ru/last/anekdot</string>
+    <string name="menu_newstory" translatable="false">anekdot.ru/last/story</string>
+    <string name="menu_newaforizm" translatable="false">anekdot.ru/last/aphorism</string>
+    <string name="menu_newstihi" translatable="false">anekdot.ru/last/poems</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="error">An error occurred during networking</string>
+    <string name="add">The post added to favorites</string>
+    <string name="errorDB">An error occurred during DB opening</string>
+    <string name="remove">The post removed from favorites</string>
+    <string name="share">Share</string>
+    <string name="from">Share from app https://play.google.com/store/apps/details?id=com.makienkovs.prikoli</string>
+</resources>

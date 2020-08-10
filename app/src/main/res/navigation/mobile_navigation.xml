@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_bash">
+
+    <fragment
+        android:id="@+id/nav_bash"
+        android:name="com.makienkovs.prikoli.ui.bashim.BashFragment"
+        android:label="@string/menu_bash"
+        tools:layout="@layout/fragment_bash" />
+
+    <fragment
+        android:id="@+id/nav_abyss"
+        android:name="com.makienkovs.prikoli.ui.bashim.AbyssFragment"
+        android:label="@string/menu_abyss"
+        tools:layout="@layout/fragment_abyss" />
+
+    <fragment
+        android:id="@+id/nav_zadolbali"
+        android:name="com.makienkovs.prikoli.ui.zadolbali.ZadolbaliFragment"
+        android:label="@string/menu_zadolbali"
+        tools:layout="@layout/fragment_zadolbali" />
+
+    <fragment
+        android:id="@+id/nav_newanekdot"
+        android:name="com.makienkovs.prikoli.ui.anekdot.NewanekdotFragment"
+        android:label="@string/menu_newanekdot"
+        tools:layout="@layout/fragment_newanekdot" />
+
+    <fragment
+        android:id="@+id/nav_newstory"
+        android:name="com.makienkovs.prikoli.ui.anekdot.NewstoryFragment"
+        android:label="@string/menu_newstory"
+        tools:layout="@layout/fragment_newstory" />
+
+    <fragment
+        android:id="@+id/nav_newaforizm"
+        android:name="com.makienkovs.prikoli.ui.anekdot.NewaforizmFragment"
+        android:label="@string/menu_newaforizm"
+        tools:layout="@layout/fragment_newaforizm" />
+
+    <fragment
+        android:id="@+id/nav_newstihi"
+        android:name="com.makienkovs.prikoli.ui.anekdot.NewstihiFragment"
+        android:label="@string/menu_newstihi"
+        tools:layout="@layout/fragment_newstihi" />
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.makienkovs.prikoli.ui.favorites.FavoritesFragment"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>
