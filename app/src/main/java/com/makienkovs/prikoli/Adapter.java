@@ -123,7 +123,7 @@ public class Adapter extends BaseAdapter {
     }
 
     private void share(PostModel p, Context c) {
-        String output = c.getString(R.string.from) + "\n" + Html.fromHtml(p.getElementPureHtml());
+        String output = c.getString(R.string.from) + "\n" + Html.fromHtml(p.getElementPureHtml(), Html.FROM_HTML_MODE_LEGACY);
         Intent share = new Intent(android.content.Intent.ACTION_SEND);
         share.setType("text/plain");
         share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -137,7 +137,7 @@ public class Adapter extends BaseAdapter {
         TextView post = v.findViewById(R.id.postitem_post);
         TextView name = v.findViewById(R.id.postitem_name);
         ImageView favor = v.findViewById(R.id.postitem_favor);
-        post.setText(Html.fromHtml(p.getElementPureHtml()));
+        post.setText(Html.fromHtml(p.getElementPureHtml(), Html.FROM_HTML_MODE_LEGACY));
         switch (p.getName()) {
             case "bash":
                 name.setText(R.string.menu_bash);

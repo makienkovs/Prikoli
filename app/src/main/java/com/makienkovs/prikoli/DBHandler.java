@@ -29,6 +29,8 @@ public class DBHandler {
             boolean favor = p.isFavor();
             long time = p.getTime();
 
+            if (db == null) return;
+
             @SuppressLint("Recycle")
             Cursor c = db.query(DBHelper.MYTABLE,
                     new String[]{DBHelper.POST, DBHelper.NAME},
@@ -51,34 +53,36 @@ public class DBHandler {
 
     public ArrayList<PostModel> readFromDB(String nameOfResource) {
         ArrayList<PostModel> posts = new ArrayList<>();
-        @SuppressLint("Recycle")
-        Cursor c = db.query(DBHelper.MYTABLE, null, null, null, null, null, null);
-        if (c.moveToNext()) {
-            int postIndex = c.getColumnIndex(DBHelper.POST);
-            int nameIndex = c.getColumnIndex(DBHelper.NAME);
-            int favorIndex = c.getColumnIndex(DBHelper.FAVOR);
-            int timeIndex = c.getColumnIndex(DBHelper.TIME);
-            do {
-                PostModel p = new PostModel();
-                String name = c.getString(nameIndex);
-                int favor = c.getInt(favorIndex);
-                if (name.equalsIgnoreCase(nameOfResource)) {
-                    p.setElementPureHtml(c.getString(postIndex));
-                    p.setName(name);
-                    if (favor == 1) {
-                        p.setFavor(true);
+        if (db != null) {
+            @SuppressLint("Recycle")
+            Cursor c = db.query(DBHelper.MYTABLE, null, null, null, null, null, null);
+            if (c.moveToNext()) {
+                int postIndex = c.getColumnIndex(DBHelper.POST);
+                int nameIndex = c.getColumnIndex(DBHelper.NAME);
+                int favorIndex = c.getColumnIndex(DBHelper.FAVOR);
+                int timeIndex = c.getColumnIndex(DBHelper.TIME);
+                do {
+                    PostModel p = new PostModel();
+                    String name = c.getString(nameIndex);
+                    int favor = c.getInt(favorIndex);
+                    if (name.equalsIgnoreCase(nameOfResource)) {
+                        p.setElementPureHtml(c.getString(postIndex));
+                        p.setName(name);
+                        if (favor == 1) {
+                            p.setFavor(true);
+                        }
+                        p.setTime(c.getLong(timeIndex));
+                        posts.add(p);
                     }
-                    p.setTime(c.getLong(timeIndex));
-                    posts.add(p);
-                }
-            } while (c.moveToNext());
+                } while (c.moveToNext());
+            }
+            c.close();
+            posts.sort((o1, o2) -> {
+                String time1 = String.valueOf(o1.getTime());
+                String time2 = String.valueOf(o2.getTime());
+                return time2.compareTo(time1);
+            });
         }
-        c.close();
-        posts.sort((o1, o2) -> {
-            String time1 = String.valueOf(o1.getTime());
-            String time2 = String.valueOf(o2.getTime());
-            return time2.compareTo(time1);
-        });
         return posts;
     }
 }

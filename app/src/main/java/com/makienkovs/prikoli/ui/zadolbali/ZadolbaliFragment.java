@@ -5,32 +5,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.makienkovs.prikoli.Adapter;
-import com.makienkovs.prikoli.App;
 import com.makienkovs.prikoli.DBHandler;
+import com.makienkovs.prikoli.MainActivity;
 import com.makienkovs.prikoli.PostModel;
 import com.makienkovs.prikoli.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.internal.EverythingIsNonNull;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class ZadolbaliFragment extends Fragment {
 
     private ListView lvZadolbali;
     private ArrayList<PostModel> posts;
     private DBHandler dbHandler;
+    public static Observer<String> observer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,33 +38,26 @@ public class ZadolbaliFragment extends Fragment {
 
         readPosts();
 
-        App.getApi().getData("zadolbali", 50).enqueue(new Callback<List<PostModel>>() {
+        observer = new Observer<String>() {
             @Override
-            @EverythingIsNonNull
-            public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
-                if (response.body() != null) {
-                    ArrayList<PostModel> postsTemp = new ArrayList<>(response.body());
-                    new Thread(()-> {
-                        for (int i = postsTemp.size() - 1; i >= 0 ; i--) {
-                            postsTemp.get(i).setTime(Calendar.getInstance().getTimeInMillis());
-                            try {
-                                TimeUnit.MILLISECONDS.sleep(1);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        dbHandler.writeToDB(postsTemp);
-                        requireActivity().runOnUiThread(()->readPosts());
-                    }).start();
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(String s) {
+                if (MainActivity.currentFragment.equalsIgnoreCase(getString(R.string.menu_zadolbali))) {
+                    requireActivity().runOnUiThread(()->readPosts());
                 }
             }
 
             @Override
-            @EverythingIsNonNull
-            public void onFailure(Call<List<PostModel>> call, Throwable t) {
-                Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
+            public void onError(Throwable e) {
             }
-        });
+
+            @Override
+            public void onComplete() {
+            }
+        };
         return root;
     }
 
